@@ -1,0 +1,175 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="title" type="xs:string"/>
+  <xs:element name="subtitle" type="xs:string"/>
+  <xs:element name="place" type="xs:string"/>
+  <xs:element name="dateStart" type="xs:string"/>
+  <xs:element name="dateEnd" type="xs:string"/>
+  <xs:element name="flags" type="xs:string"/>
+  <xs:element name="entry">
+    <xs:complexType>
+      <xs:choice maxOccurs="unbounded" minOccurs="0">
+        <xs:element ref="title">
+          <xs:annotation>
+            <xs:documentation> Use classes rather than weird LINK flag ??</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element ref="subtitle"/>
+        <xs:element ref="flags"/>
+        <xs:element ref="place">
+          <xs:annotation>
+            <xs:documentation> Optional flags that direct the behavior during layout generation  Will inherit flags of that entry: will be hidden when generating the layout</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element ref="dateStart"/>
+        <xs:element ref="dateEnd"/>
+        <xs:element ref="description">
+          <xs:annotation>
+            <xs:documentation> "description" or "subtitle" ? "description" or "subtitle" ? "description" or "subtitle" ? "description" or "subtitle" ?</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element ref="assoDesc"/>
+        <xs:element ref="roleDesc"/>
+        <xs:element ref="role"/>
+      </xs:choice>
+      <xs:attribute type="xs:string" name="id" use="optional"/>
+      <xs:attribute type="xs:string" name="class" use="optional"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="description" type="xs:string"/>
+  <xs:element name="assoDesc" type="xs:string"/>
+  <xs:element name="roleDesc" type="xs:string"/>
+  <xs:element name="role" type="xs:string"/>
+  <xs:element name="education">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="entry" maxOccurs="unbounded" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation> &lt;hideAbove/> Will be hidden in the final layout ?  No end date == ongoing</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="jobs" type="xs:string"/>
+  <xs:element name="experience">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="entry" maxOccurs="unbounded" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="research">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="entry"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="internships">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="entry" maxOccurs="unbounded" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="associations">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="entry" maxOccurs="unbounded" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation> empty == ongoing empty == ongoing</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="fluent" type="xs:string"/>
+  <xs:element name="basics" type="xs:string"/>
+  <xs:element name="firstName" type="xs:string"/>
+  <xs:element name="lastName" type="xs:string"/>
+  <xs:element name="dateOfBirth" type="xs:string"/>
+  <xs:element name="email" type="xs:string"/>
+  <xs:element name="phone" type="xs:string"/>
+  <xs:element name="development">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute type="xs:string" name="separator"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="admin" type="xs:string"/>
+  <xs:element name="soft" type="xs:string"/>
+  <xs:element name="management" type="xs:string"/>
+  <xs:element name="history">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="education"/>
+        <xs:element ref="jobs"/>
+        <xs:element ref="experience">
+          <xs:annotation>
+            <xs:documentation> or general experience ?</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element ref="research"/>
+        <xs:element ref="internships"/>
+        <xs:element ref="associations"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="languages">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="fluent"/>
+        <xs:element ref="basics"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="general">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="firstName"/>
+        <xs:element ref="lastName"/>
+        <xs:element ref="dateOfBirth"/>
+        <xs:element ref="email">
+          <xs:annotation>
+            <xs:documentation> age is deduced </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element ref="phone"/>
+        <xs:element ref="description"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="skills">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="development">
+          <xs:annotation>
+            <xs:documentation> for long list: allows separatio with comma or newline</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element ref="admin"/>
+        <xs:element ref="soft"/>
+        <xs:element ref="management"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="hobbies" type="xs:string"/>
+  <xs:element name="resumee">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="history"/>
+        <xs:element ref="languages"/>
+        <xs:element ref="general">
+          <xs:annotation>
+            <xs:documentation> Could split between a general desc and a specific to job offer desc </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element ref="skills"/>
+        <xs:element ref="hobbies"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

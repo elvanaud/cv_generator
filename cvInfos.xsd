@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <!-- definition of simple elements -->
+    <xs:element name="title" type="xs:string"/>
+    <xs:element name="description" type="xs:string"/>
+    <xs:element name="roleDescription" type="xs:string"/>
+    <xs:element name="assoDesc" type="xs:string"/>
+    <xs:element name="place" type="xs:string"/>
+    
+    <xs:element name="education">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="name" type="xs:string"/>
+                <xs:element name="address" type="xs:string"/>
+                <xs:element name="city" type="xs:string"/>
+                <xs:element name="country" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element> 
+</xs:schema> 
+
+
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="resumee">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="history">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="education">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="entry" maxOccurs="unbounded" minOccurs="0">
+                      <xs:annotation>
+                        <xs:documentation> &lt;hideAbove/> Will be hidden in the final layout ?  No end date == ongoing</xs:documentation>
+                      </xs:annotation>
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:string" name="title"/>
+                          <xs:element type="xs:string" name="subtitle" minOccurs="0"/>
+                          <xs:element type="xs:string" name="flags" minOccurs="0"/>
+                          <xs:element type="xs:string" name="place">
+                            <xs:annotation>
+                              <xs:documentation> Optional flags that direct the behavior during layout generation </xs:documentation>
+                            </xs:annotation>
+                          </xs:element>
+                          <xs:element type="xs:string" name="dateStart"/>
+                          <xs:element type="xs:string" name="dateEnd" minOccurs="0"/>
+                        </xs:sequence>
+                        <xs:attribute type="xs:string" name="id" use="optional"/>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element type="xs:string" name="jobs"/>
+              <xs:element name="experience">
+                <xs:annotation>
+                  <xs:documentation> or general experience ?</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="entry" maxOccurs="unbounded" minOccurs="0">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:string" name="title">
+                            <xs:annotation>
+                              <xs:documentation> Use classes rather than weird LINK flag ??</xs:documentation>
+                            </xs:annotation>
+                          </xs:element>
+                          <xs:element type="xs:string" name="description" minOccurs="0"/>
+                        </xs:sequence>
+                        <xs:attribute type="xs:string" name="class" use="optional"/>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="research">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="entry">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:string" name="title"/>
+                        </xs:sequence>
+                        <xs:attribute type="xs:string" name="class"/>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="internships">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="entry" maxOccurs="unbounded" minOccurs="0">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:string" name="title"/>
+                          <xs:element type="xs:string" name="subtitle"/>
+                          <xs:element type="xs:string" name="description">
+                            <xs:annotation>
+                              <xs:documentation> "description" or "subtitle" ? "description" or "subtitle" ? "description" or "subtitle" ? "description" or "subtitle" ?</xs:documentation>
+                            </xs:annotation>
+                          </xs:element>
+                          <xs:element type="xs:string" name="flags" minOccurs="0"/>
+                          <xs:element type="xs:string" name="place">
+                            <xs:annotation>
+                              <xs:documentation> Will inherit flags of that entry: will be hidden when generating the layout</xs:documentation>
+                            </xs:annotation>
+                          </xs:element>
+                          <xs:element type="xs:string" name="dateStart"/>
+                          <xs:element type="xs:string" name="dateEnd"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="associations">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="entry" maxOccurs="unbounded" minOccurs="0">
+                      <xs:annotation>
+                        <xs:documentation> empty == ongoing empty == ongoing</xs:documentation>
+                      </xs:annotation>
+                      <xs:complexType>
+                        <xs:choice maxOccurs="unbounded" minOccurs="0">
+                          <xs:element type="xs:string" name="title"/>
+                          <xs:element type="xs:string" name="assoDesc"/>
+                          <xs:element type="xs:string" name="roleDesc"/>
+                          <xs:element type="xs:string" name="role"/>
+                          <xs:element type="xs:string" name="place"/>
+                          <xs:element type="xs:string" name="dateStart"/>
+                          <xs:element type="xs:string" name="dateEnd"/>
+                        </xs:choice>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="languages">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:string" name="fluent"/>
+              <xs:element type="xs:string" name="basics"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="general">
+          <xs:annotation>
+            <xs:documentation> Could split between a general desc and a specific to job offer desc </xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:string" name="firstName"/>
+              <xs:element type="xs:string" name="lastName"/>
+              <xs:element type="xs:string" name="dateOfBirth"/>
+              <xs:element type="xs:string" name="email">
+                <xs:annotation>
+                  <xs:documentation> age is deduced </xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element type="xs:string" name="phone"/>
+              <xs:element type="xs:string" name="description"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="skills">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="development">
+                <xs:annotation>
+                  <xs:documentation> for long list: allows separatio with comma or newline</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="xs:string">
+                      <xs:attribute type="xs:string" name="separator"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element type="xs:string" name="admin"/>
+              <xs:element type="xs:string" name="soft"/>
+              <xs:element type="xs:string" name="management"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element type="xs:string" name="hobbies"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
