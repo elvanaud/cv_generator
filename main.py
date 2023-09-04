@@ -10,10 +10,10 @@ xml_filename = "cvInfos.xml"
 xsl_filename = "transformer.xsl"
 
 dom = ET.parse(xml_filename)
-xslt = ET.parse(xsl_filename) 
+xslt = ET.parse(xsl_filename)
 transform = ET.XSLT(xslt)
 newdom = transform(dom)
 res = ET.tostring(newdom, pretty_print=True,encoding=str)
-file = open("generated.html","w", encoding="UTF8")
+file = open("dist/generated.html","w", encoding="UTF8")
 print(res)
 file.write(res)

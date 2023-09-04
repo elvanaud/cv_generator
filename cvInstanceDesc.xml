@@ -1,0 +1,13 @@
+<instance> <!-- xml or some kind of scripting language ? -->
+    <layout>default</layout> <!-- Choose from presets or from some kind of html template -->
+    <history>
+        <hideBefore>2018</hideBefore> <!-- will only show entries after 2018 for all the subsections of "history" (education, jobs etc)-->
+    </history>
+    <languages>
+        <hide>basics</hide>
+    </languages>
+    <skills>
+        <highlight>C++,ASM</highlight>
+        <hide>admin</hide>
+    </skills>
+</instance>

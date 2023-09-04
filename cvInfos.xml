@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?xml-stylesheet href="transformer.xsl" type="text/xsl"?>
+<resumee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="grammar/grammar2.xsd">
+    <history>
+        <education>
+            <entry>
+                <title>BAC</title>
+                <subtitle>Mention très bien</subtitle>
+                <place>Lyçée général de Saintes</place>
+                <dateStart>2014/09</dateStart>
+                <dateEnd>2017/06</dateEnd>
+            </entry>
+            <!-- <hideAbove/> Will be hidden in the final layout ? -->
+            <entry>
+                <title>DUT Informatique</title>
+                <subtitle>Option embarqué</subtitle>
+                <place>IUT Informatique de La Rochelle</place>
+                <dateStart>2017/09</dateStart>
+                <dateEnd>2019/06</dateEnd>
+            </entry>
+            <entry>
+                <title>L3 Informatique</title>
+                <subtitle>Option dévelopement logiciel</subtitle>
+                <place>Université de La Rochelle</place>
+                <dateStart>2019/09</dateStart>
+                <dateEnd>2020/06</dateEnd>
+            </entry>
+            <entry id = "m1">
+                <title>M1 Informatique</title>
+                <subtitle>Option DATA  - Abandonné</subtitle>
+                <flags>HIDE</flags> <!-- Optional flags that direct the behavior during layout generation -->
+                <place>Université de La Rochelle</place>
+                <dateStart>2020/09</dateStart>
+                <dateEnd>2021/06</dateEnd>
+            </entry>
+            <entry>
+                <title>CPGE ATS</title>
+                <subtitle>Génie industriel</subtitle>
+                <place>Lyçée Vieljeux à La Rochelle</place>
+                <dateStart>2021/09</dateStart>
+                <dateEnd>2022/06</dateEnd>
+            </entry>
+            <entry id="mines">
+                <title>Ingénieur généraliste</title>
+                <place>Mines de Paris</place>
+                <dateStart>2022/09</dateStart> <!-- No end date == ongoing-->
+            </entry>
+        </education>
+        <jobs>euh</jobs> <!-- or general experience ?-->
+        <experience>
+            <entry class="m1"> <!-- Use classes rather than weird LINK flag ??-->
+                <title>Projet Informatique de M1</title>
+                <description>Dévelopement d'une application de Quiz</description>
+            </entry>
+            <entry>
+                <title>MIG</title>
+            </entry>
+        </experience>
+        <research>
+            <entry class="mines">
+                <title>Semestre de recherche</title>
+            </entry>
+        </research>
+        <internships>
+            <entry>
+                <title>Stage DUT</title>
+                <subtitle>Dévelopement de ... jsp</subtitle> <!-- "description" or "subtitle" ?-->
+                <description>Réalisé seul</description>
+                <place>Kyutech - Japon</place>
+                <dateStart>2019/04</dateStart>
+                <dateEnd>2019/06</dateEnd>
+            </entry>
+            <entry>
+                <title>Stage L3</title>
+                <subtitle>Dévelopement d'une interface graphique pour une application de recherche</subtitle> <!-- "description" or "subtitle" ?-->
+                <description>Réalisé à deux en distanciel</description>
+                <place>Laboratoire L3I</place>
+                <dateStart>2020/04</dateStart>
+                <dateEnd>2020/06</dateEnd>
+            </entry>
+            <entry>
+                <title>Stage M1</title>
+                <subtitle>Dévelopement d'une interface graphique pour une application de recherche encore mdrrrr</subtitle> <!-- "description" or "subtitle" ?-->
+                <description>Réalisé seul en distanciel</description>
+                <flags>LINK:#m1</flags> <!-- Will inherit flags of that entry: will be hidden when generating the layout-->
+                <place>Laboratoire L3I</place>
+                <dateStart>2020/04</dateStart>
+                <dateEnd>2020/06</dateEnd>
+            </entry>
+            <entry>
+                <title>Stage exécutant</title>
+                <subtitle>Mise en rayon</subtitle> <!-- "description" or "subtitle" ?-->
+                <description>Réalisé seul</description>
+                <flags>LINK:#mines</flags>
+                <place>Carrefour Saint-Marcel Paris 05</place>
+                <dateStart>2022/05/02</dateStart>
+                <dateEnd>2022/05/26</dateEnd>
+            </entry>
+        </internships>
+        <associations>
+            <entry>
+                <title>REZAL</title>
+                <assoDesc>Administre le réseau internet dans la résidence</assoDesc>
+                <roleDesc>Président administratif, Administration du réseau, Formations des membres</roleDesc>
+                <role>Président</role>
+                <place>Maison des mines et des ponts - Paris 05</place>
+                <dateStart>2023/06</dateStart>
+                <dateEnd></dateEnd> <!-- empty == ongoing-->
+            </entry>
+            <entry>
+                <title>BDA</title>
+                <place>Mines de Paris</place>
+                <assoDesc>Bureau des arts des mines de paris (asso étudiante)</assoDesc>
+                <role>RSI</role>
+                <roleDesc>Administre le site web de l'association</roleDesc>
+                <dateStart>2023/06</dateStart>
+                <dateEnd></dateEnd> <!-- empty == ongoing-->
+            </entry>
+        </associations>
+    </history>
+    <languages>
+        <fluent>
+            Français
+            Anglais
+        </fluent>
+        <basics>
+            Allemand
+            Chinois
+            Espagnol
+            Japonais
+        </basics>
+    </languages>
+    <general>
+        <firstName>Arthur</firstName>
+        <lastName>Louvrier</lastName>
+        <dateOfBirth>1999/06/15</dateOfBirth> <!-- age is deduced -->
+        <email></email>
+        <phone></phone>
+        <description></description> <!-- Could split between a general desc and a specific to job offer desc -->
+    </general>
+    <skills>
+        <development separator=","> <!-- for long list: allows separatio with comma or newline-->
+            C++,Java,Python,Rust,ASM,HTML,CSS,Javascript,C
+        </development>
+        <admin>
+            SQL, Linux,..
+        </admin>
+        <soft>
+            Travail d'équipe (ptdrrr)
+        </soft>
+        <management>
+            Méthode Agile
+        </management>
+    </skills>
+    <hobbies>
+        Lecture
+        Jouer de la guitare
+        Dévelopement d'applications
+    </hobbies>
+</resumee>
