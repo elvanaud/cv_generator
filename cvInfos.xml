@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <?xml-stylesheet href="transformer.xsl" type="text/xsl"?>
-<resumee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="grammar/grammar2.xsd">
+<resumee><!-- xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="grammar/grammar2.xsd">-->
     <history>
         <education>
             <entry>
@@ -46,7 +46,7 @@
                 <dateStart>2022/09</dateStart> <!-- No end date == ongoing-->
             </entry>
         </education>
-        <jobs>euh</jobs> <!-- or general experience ?-->
+        <jobs></jobs> <!-- or general experience ?-->
         <experience>
             <entry class="m1"> <!-- Use classes rather than weird LINK flag ??-->
                 <title>Projet Informatique de M1</title>
@@ -58,7 +58,7 @@
         </experience>
         <research>
             <entry class="mines">
-                <title>Semestre de recherche</title>
+                <title>Trimestre de recherche</title>
             </entry>
         </research>
         <internships>
@@ -141,7 +141,7 @@
         <description>Étudiant aux Mines de Paris</description> <!-- Could split between a general desc and a specific to job offer desc -->
     </general>
     <skills>
-        <development separator=","> <!-- for long list: allows separatio with comma or newline-->
+        <development separator=","> <!-- for long list: allows separation with comma or newline-->
             C++,Java,Python,Rust,ASM,HTML,CSS,Javascript,C
         </development>
         <admin>
