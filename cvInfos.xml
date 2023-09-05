@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <?xml-stylesheet href="transformer.xsl" type="text/xsl"?>
-<resumee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xsi:noNamespaceSchemaLocation="grammar/grammar2.xsd">
+<resumee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="grammar/grammar2.xsd">
     <history>
         <education>
             <entry>
@@ -134,10 +133,12 @@ xsi:noNamespaceSchemaLocation="grammar/grammar2.xsd">
     <general>
         <firstName>Arthur</firstName>
         <lastName>Louvrier</lastName>
+        <photo>photo.jpg</photo>
         <dateOfBirth>1999/06/15</dateOfBirth> <!-- age is deduced -->
         <email></email>
-        <phone></phone>
-        <description></description> <!-- Could split between a general desc and a specific to job offer desc -->
+        <phone>1234567890</phone>
+        <site>www.github.com/elvanaud</site>
+        <description>Étudiant aux Mines de Paris</description> <!-- Could split between a general desc and a specific to job offer desc -->
     </general>
     <skills>
         <development separator=","> <!-- for long list: allows separatio with comma or newline-->

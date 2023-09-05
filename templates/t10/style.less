@@ -1,0 +1,468 @@
+/*** Variables ***/
+@light-bege: #F0EFEF;
+@magenta: #EE3665;
+@cyan: #4CC3C7;
+@dark-grey: #444444;
+
+@bg-color: @light-bege;
+@text-color: @dark-grey;
+
+@padding-md-vertical: 10px;
+@padding-md-horizontal: @padding-md-vertical + ( @padding-md-vertical * .5 );
+
+@text-size-md: 18px;
+@text-size-sm: @text-size-md * 0.8;
+
+/*** Responsive utilities ***/
+@screen-xs: 480px;
+@screen-sm: 768px;
+@screen-md: 992px;
+@screen-lg: 1200px;
+
+@screen-xs-max: (@screen-sm - 1);
+@screen-sm-max: (@screen-md - 1);
+@screen-md-max: (@screen-lg - 1);
+
+/*** Fonts ***/
+.josefin {
+    font-family: 'Josefin Slab', serif;    
+}
+.raleway {
+    font-family: 'Raleway', sans-serif;
+}
+
+/*** Utils ***/
+.center {
+    text-align: center;
+}
+.left {
+    text-align: left;
+}
+.right {
+    text-align: right;
+}
+.no-style-list {
+    list-style: none;
+    margin-left: 0;
+    padding-left: 0;
+}
+.rounded-circle {
+    border-radius: 1000px;
+}
+.color-transition {
+    transition: color .2s linear;
+}
+.fill-transition {
+    transition: fill .2s linear;
+}
+/*** Styles ***/
+body {
+    background-color: @bg-color;
+    color: @text-color;
+    font-size: @text-size-md;
+    .josefin;
+}
+article {
+    display: flex;
+    flex-direction: column;
+	flex-wrap: nowrap;
+	height: 100vh;
+    position: relative;
+}
+main {
+    flex: 1 1 auto;
+	overflow-y: auto;
+	-webkit-overflow-scrolling: touch;
+}
+
+@arrow-size: 1.2em;
+header, footer {
+    background-color: @magenta;
+    border-bottom: 0.348em solid @cyan;
+    .raleway;
+    font-weight: 500;
+    font-size: @text-size-sm;
+    padding: @padding-md-vertical @padding-md-horizontal;
+    position: relative;
+    
+    &::before, &::after {
+        content: "";
+        border: ( @arrow-size / 2 ) solid;
+        height: @arrow-size;
+        left: 50%;
+        margin-left: -( @arrow-size * .5 );
+        position: absolute;
+        transform: rotate(45deg);
+        width: @arrow-size;
+        z-index: 1010;
+    }
+    &::before {
+        border-color: transparent @cyan @cyan transparent;
+        bottom: -( @arrow-size * 0.7 );
+    }
+    &::after {
+        border-color: transparent @magenta @magenta transparent;
+        bottom: -( @arrow-size * .35 );
+    }
+    
+    a {
+        color: @light-bege;
+        position: relative;
+        .color-transition;
+        text-decoration: none;
+        z-index: 10;
+        
+        svg path {
+            .fill-transition;
+        }
+        
+        &:hover, &:focus {
+            color: @text-color;
+            text-decoration: none;
+            
+            svg path {
+                fill: @text-color;
+            }
+        }
+    }
+}
+
+h1 {
+    color: @magenta;
+    .center;
+    font-size: 15vw;
+    font-weight: 300;
+    margin: 0.6em 0;
+}
+
+h2 {
+    color: @cyan;
+    .raleway;
+    font-size: 3.8vw;
+    font-weight: 800;
+    margin: 1.3em 0;
+    .center;
+    text-transform: uppercase;
+}
+.intro {
+    [class^="col"] {
+        &:first-child {
+            .center;
+            padding-right: @padding-md-horizontal;
+        }
+        &:last-child {
+            .center;
+            padding-left: @padding-md-horizontal;
+        }
+    }
+}
+
+@year-size: 3.2em;
+
+.timeline {
+    .no-style-list;
+    
+    li {
+        align-items: start;
+        margin: 2em 0;
+        
+        [class^="col"]:first-child .year {
+            margin-left: 0.7em;
+        }
+        [class^="col"]:nth-child(2) {
+            > span {
+                margin-bottom: 0.75em;
+            }
+        }
+        .year {
+            align-items: center;
+            background-color: @cyan;
+            .rounded-circle;
+            color: @text-color;
+            display: flex;
+            font-weight: 800;
+            font-size: 0.8em;
+            height: @year-size;
+            justify-content: center;
+            line-height: 1;
+            position: relative;
+            width: @year-size;
+            z-index: 10;
+        }
+        &.both {
+            align-items: stretch;
+            
+            .year {
+                height: 100%;
+            }
+        }
+        > [class^="col"] > span:last-child {
+            margin-bottom: 0;
+        }
+    }
+    
+    h4 {
+        color: @magenta;
+        cursor: default;
+        margin: 0.15em 0 0;
+        
+        span {
+            position: relative;
+            
+            &::after {
+                background: @magenta;
+                border-radius: 10px;
+                bottom: 0;
+                content: "";
+                display: block;
+                height: 2px;
+                left: -@padding-md-horizontal;
+                position: absolute;
+                width: 0;
+                transition: width 0.12s cubic-bezier(.01,-0.01,.11,1);
+            }
+        }
+    }
+    .col .right {
+        h4 {
+            span::after {
+                left: inherit;
+                right: -@padding-md-horizontal;
+            }
+        }
+    }
+    p {
+        margin: 0;
+    }
+}
+
+.extras {
+    margin-top: 1.5em;
+    padding-top: 1.5em;
+    margin-bottom: 0;
+    border-top: @cyan dotted 1px;
+    
+    [class^="col"] {
+        margin-bottom: 1em;
+    }
+    h3 {
+        color: @magenta;
+        .raleway;
+        font-size: 1.3em;
+        font-weight: 800;
+        text-transform: uppercase;
+    }
+    ul {
+        .no-style-list;
+        margin-left: 0.05em;
+    }
+}
+
+footer {
+    align-self: flex-end;
+    border-bottom: none;
+    bottom: 0;
+    flex: 0 0 auto;
+    padding-top: 0;
+    padding-bottom: @padding-md-horizontal;
+    width: 100%;
+    z-index: 1000;
+    
+    &::before, &::after, > div::before, > div::after {
+        bottom: calc( 100% - ( @arrow-size * 0.2 ) );
+        width: 50%;
+        height: ( @arrow-size * 1.2 );
+        transform: none;
+        border: none;
+    }
+    &::before {
+        background: linear-gradient(225deg, transparent ( @arrow-size / 2.5 ), @cyan 0) top left;
+        left: 0.6em;
+    }
+    &::after {
+        background: linear-gradient(135deg, transparent ( @arrow-size / 2.5 ), @cyan 0) top left;
+        left: inherit;
+        right: 0;
+    }
+    
+    > div {
+        &::before, &::after {
+            bottom: calc( 100% - ( @arrow-size * 0.5 ) );
+            content: "";
+            display: block;
+            position: absolute;
+            height: ( @arrow-size * 1.2 );
+            z-index: 1020;
+        }
+        &::before {
+            background: linear-gradient(225deg, transparent ( @arrow-size / 2.2 ), @magenta 0) top left;
+            left: 0;
+        }
+        &::after {
+            background: linear-gradient(135deg, transparent ( @arrow-size / 2.2 ), @magenta 0) top left;
+            left: inherit;
+            right: 0;
+        }
+    }
+    [class^="col"] {
+        z-index: 1030;
+    }
+}
+
+@media (min-width: @screen-md) {
+    article {
+        height: auto;
+    }
+}
+@media not all and (pointer:coarse) {
+    .timeline {
+        li {
+            .year {
+                cursor: default;
+                transition: all linear 0.15s;
+                
+            }
+            &:hover {
+                .year {
+                    background-color: @magenta;
+                }
+                h4 span::after {
+                    width: ~'calc(100% + @{padding-md-horizontal})';
+                }
+            }
+        }
+    }
+}
+@media (min-width: @screen-sm) {
+    .right-md {
+        .right;
+    }
+    h1 {
+        font-size: 4.42em;
+        
+    }
+    h2 {
+        font-size: 1.4em;
+        
+        .bullets {
+            position: relative;
+            z-index: 1;
+
+            span {
+                display: inline-block;
+                left: -0.05em;
+                position: absolute;
+                .center;
+                width: 0.5em;
+                white-space: wrap;
+                top: 0.9em;
+                line-height: 0.6;
+            }
+        }
+        &.recenter {
+            margin-left: -1.65em;
+        }
+    }
+    .intro {
+        [class|="col"] {
+            &:first-child {
+                padding-right: @padding-md-horizontal * 2;
+                .right;
+            }
+            &:last-child {
+                padding-left: @padding-md-horizontal * 2;
+                .left;
+            }
+        }
+    }
+    .timeline {
+
+        li {
+            align-items: center;
+            margin: 0.5em 0;
+            
+            &:nth-child(odd):not(.both):not(.even), &:nth-child(odd).both .right, &:nth-child(even).both .right-md, &.odd:nth-child(even) {
+                h4 {
+                    span {
+                        &::after {
+                            left: inherit;
+                            right: -@padding-md-horizontal;
+                        }
+                    }
+                }
+            }
+            &:nth-child(odd):not(.both), &:nth-child(even):not(.both).odd {
+                [class^="col"]:not(:first-child) {
+                    .right;
+                    margin-left: -( @year-size / 2 );
+                }
+                .year {
+                    margin-left: 0;
+                }
+            }
+            &:nth-child(even):not(.both), &:nth-child(odd):not(.both).even {
+                .year {
+                    margin-left: -( @year-size / 2 );
+                }
+                [class^="col"]:not(:first-child) {
+                    text-align: left;
+                    margin-left: 0;
+                }
+            }
+            &.both {
+                > [class^="col"]:first-child {
+                    margin-left: 0;
+                    align-self: stretch;
+                    
+                    .year {
+                        align-items: start;
+                        height: 100%;
+                        margin-left: 0;
+                        padding-top: 1.1em;
+                    }
+                }
+                > [class^="col"] > .row > [class^="col"]:not(:last-child), > [class^="col"].right-md > :first-child {
+                    //margin-bottom: @year-size;
+                }
+                .vertical-top-offset {
+                    margin-top: @year-size;
+                }
+            }
+            .year {
+                font-size: 1em;
+                font-weight: 600;
+                
+                .certification {
+                    position: absolute;
+                    height: 2em;
+                    top: calc( 50% - 1em );
+                    width: 2em;
+                }
+            }
+            .order-md-2 {
+                .year {
+                    .certification {
+                        left: ( @year-size + 1em );
+                    }
+                }
+            }
+            .offset-md-6 {
+                .year {
+                    .certification {
+                        left: -( @year-size );
+                    }
+                }
+            }
+        }
+
+    }
+    .extras {
+        border-top: none;
+        margin-top: 5em;
+        margin-bottom: 3em;
+        
+        [class^="col"] {
+            margin-bottom: 0;
+        }
+    }
+}

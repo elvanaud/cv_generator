@@ -1,0 +1,392 @@
+/*** Variables ***/
+/*** Responsive utilities ***/
+/*** Fonts ***/
+.josefin {
+  font-family: 'Josefin Slab', serif;
+}
+.raleway {
+  font-family: 'Raleway', sans-serif;
+}
+/*** Utils ***/
+.center {
+  text-align: center;
+}
+.left {
+  text-align: left;
+}
+.right {
+  text-align: right;
+}
+.no-style-list {
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+.rounded-circle {
+  border-radius: 1000px;
+}
+.color-transition {
+  transition: color 0.2s linear;
+}
+.fill-transition {
+  transition: fill 0.2s linear;
+}
+/*** Styles ***/
+body {
+  background-color: #F0EFEF;
+  color: #444444;
+  font-size: 18px;
+  font-family: 'Josefin Slab', serif;
+}
+article {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  height: 100vh;
+  position: relative;
+}
+main {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+header,
+footer {
+  background-color: #EE3665;
+  border-bottom: 0.348em solid #4CC3C7;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 500;
+  font-size: 14.4px;
+  padding: 10px 15px;
+  position: relative;
+}
+header::before,
+footer::before,
+header::after,
+footer::after {
+  content: "";
+  border: 0.6em solid;
+  height: 1.2em;
+  left: 50%;
+  margin-left: -0.6em;
+  position: absolute;
+  transform: rotate(45deg);
+  width: 1.2em;
+  z-index: 1010;
+}
+header::before,
+footer::before {
+  border-color: transparent #4CC3C7 #4CC3C7 transparent;
+  bottom: -0.84em;
+}
+header::after,
+footer::after {
+  border-color: transparent #EE3665 #EE3665 transparent;
+  bottom: -0.42em;
+}
+header a,
+footer a {
+  color: #F0EFEF;
+  position: relative;
+  transition: color 0.2s linear;
+  text-decoration: none;
+  z-index: 10;
+}
+header a svg path,
+footer a svg path {
+  transition: fill 0.2s linear;
+}
+header a:hover,
+footer a:hover,
+header a:focus,
+footer a:focus {
+  color: #444444;
+  text-decoration: none;
+}
+header a:hover svg path,
+footer a:hover svg path,
+header a:focus svg path,
+footer a:focus svg path {
+  fill: #444444;
+}
+h1 {
+  color: #EE3665;
+  text-align: center;
+  font-size: 15vw;
+  font-weight: 300;
+  margin: 0.6em 0;
+}
+h2 {
+  color: #4CC3C7;
+  font-family: 'Raleway', sans-serif;
+  font-size: 3.8vw;
+  font-weight: 800;
+  margin: 1.3em 0;
+  text-align: center;
+  text-transform: uppercase;
+}
+.intro [class^="col"]:first-child {
+  text-align: center;
+  padding-right: 15px;
+}
+.intro [class^="col"]:last-child {
+  text-align: center;
+  padding-left: 15px;
+}
+.timeline {
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+.timeline li {
+  align-items: start;
+  margin: 2em 0;
+}
+.timeline li [class^="col"]:first-child .year {
+  margin-left: 0.7em;
+}
+.timeline li [class^="col"]:nth-child(2) > span {
+  margin-bottom: 0.75em;
+}
+.timeline li .year {
+  align-items: center;
+  background-color: #4CC3C7;
+  border-radius: 1000px;
+  color: #444444;
+  display: flex;
+  font-weight: 800;
+  font-size: 0.8em;
+  height: 3.2em;
+  justify-content: center;
+  line-height: 1;
+  position: relative;
+  width: 3.2em;
+  z-index: 10;
+}
+.timeline li.both {
+  align-items: stretch;
+}
+.timeline li.both .year {
+  height: 100%;
+}
+.timeline li > [class^="col"] > span:last-child {
+  margin-bottom: 0;
+}
+.timeline h4 {
+  color: #EE3665;
+  cursor: default;
+  margin: 0.15em 0 0;
+}
+.timeline h4 span {
+  position: relative;
+}
+.timeline h4 span::after {
+  background: #EE3665;
+  border-radius: 10px;
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 2px;
+  left: -15px;
+  position: absolute;
+  width: 0;
+  transition: width 0.12s cubic-bezier(0.01, -0.01, 0.11, 1);
+}
+.timeline .col .right h4 span::after {
+  left: inherit;
+  right: -15px;
+}
+.timeline p {
+  margin: 0;
+}
+.extras {
+  margin-top: 1.5em;
+  padding-top: 1.5em;
+  margin-bottom: 0;
+  border-top: #4CC3C7 dotted 1px;
+}
+.extras [class^="col"] {
+  margin-bottom: 1em;
+}
+.extras h3 {
+  color: #EE3665;
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.3em;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+.extras ul {
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0;
+  margin-left: 0.05em;
+}
+footer {
+  align-self: flex-end;
+  border-bottom: none;
+  bottom: 0;
+  flex: 0 0 auto;
+  padding-top: 0;
+  padding-bottom: 15px;
+  width: 100%;
+  z-index: 1000;
+}
+footer::before,
+footer::after,
+footer > div::before,
+footer > div::after {
+  bottom: calc(100% - (1.2em * 0.2));
+  width: 50%;
+  height: 1.44em;
+  transform: none;
+  border: none;
+}
+footer::before {
+  background: linear-gradient(225deg, transparent 0.48em, #4CC3C7 0) top left;
+  left: 0.6em;
+}
+footer::after {
+  background: linear-gradient(135deg, transparent 0.48em, #4CC3C7 0) top left;
+  left: inherit;
+  right: 0;
+}
+footer > div::before,
+footer > div::after {
+  bottom: calc(100% - (1.2em * 0.5));
+  content: "";
+  display: block;
+  position: absolute;
+  height: 1.44em;
+  z-index: 1020;
+}
+footer > div::before {
+  background: linear-gradient(225deg, transparent 0.54545455em, #EE3665 0) top left;
+  left: 0;
+}
+footer > div::after {
+  background: linear-gradient(135deg, transparent 0.54545455em, #EE3665 0) top left;
+  left: inherit;
+  right: 0;
+}
+footer [class^="col"] {
+  z-index: 1030;
+}
+@media (min-width: 992px) {
+  article {
+    height: auto;
+  }
+}
+@media not all and (pointer: coarse) {
+  .timeline li .year {
+    cursor: default;
+    transition: all linear 0.15s;
+  }
+  .timeline li:hover .year {
+    background-color: #EE3665;
+  }
+  .timeline li:hover h4 span::after {
+    width: calc(100% + 15px);
+  }
+}
+@media (min-width: 768px) {
+  .right-md {
+    text-align: right;
+  }
+  h1 {
+    font-size: 4.42em;
+  }
+  h2 {
+    font-size: 1.4em;
+  }
+  h2 .bullets {
+    position: relative;
+    z-index: 1;
+  }
+  h2 .bullets span {
+    display: inline-block;
+    left: -0.05em;
+    position: absolute;
+    text-align: center;
+    width: 0.5em;
+    white-space: wrap;
+    top: 0.9em;
+    line-height: 0.6;
+  }
+  h2.recenter {
+    margin-left: -1.65em;
+  }
+  .intro [class|="col"]:first-child {
+    padding-right: 30px;
+    text-align: right;
+  }
+  .intro [class|="col"]:last-child {
+    padding-left: 30px;
+    text-align: left;
+  }
+  .timeline li {
+    align-items: center;
+    margin: 0.5em 0;
+  }
+  .timeline li:nth-child(odd):not(.both):not(.even) h4 span::after,
+  .timeline li:nth-child(odd).both .right h4 span::after,
+  .timeline li:nth-child(even).both .right-md h4 span::after,
+  .timeline li.odd:nth-child(even) h4 span::after {
+    left: inherit;
+    right: -15px;
+  }
+  .timeline li:nth-child(odd):not(.both) [class^="col"]:not(:first-child),
+  .timeline li:nth-child(even):not(.both).odd [class^="col"]:not(:first-child) {
+    text-align: right;
+    margin-left: -1.6em;
+  }
+  .timeline li:nth-child(odd):not(.both) .year,
+  .timeline li:nth-child(even):not(.both).odd .year {
+    margin-left: 0;
+  }
+  .timeline li:nth-child(even):not(.both) .year,
+  .timeline li:nth-child(odd):not(.both).even .year {
+    margin-left: -1.6em;
+  }
+  .timeline li:nth-child(even):not(.both) [class^="col"]:not(:first-child),
+  .timeline li:nth-child(odd):not(.both).even [class^="col"]:not(:first-child) {
+    text-align: left;
+    margin-left: 0;
+  }
+  .timeline li.both > [class^="col"]:first-child {
+    margin-left: 0;
+    align-self: stretch;
+  }
+  .timeline li.both > [class^="col"]:first-child .year {
+    align-items: start;
+    height: 100%;
+    margin-left: 0;
+    padding-top: 1.1em;
+  }
+  .timeline li.both .vertical-top-offset {
+    margin-top: 3.2em;
+  }
+  .timeline li .year {
+    font-size: 1em;
+    font-weight: 600;
+  }
+  .timeline li .year .certification {
+    position: absolute;
+    height: 2em;
+    top: calc(50% - 1em);
+    width: 2em;
+  }
+  .timeline li .order-md-2 .year .certification {
+    left: 4.2em;
+  }
+  .timeline li .offset-md-6 .year .certification {
+    left: -3.2em;
+  }
+  .extras {
+    border-top: none;
+    margin-top: 5em;
+    margin-bottom: 3em;
+  }
+  .extras [class^="col"] {
+    margin-bottom: 0;
+  }
+}
